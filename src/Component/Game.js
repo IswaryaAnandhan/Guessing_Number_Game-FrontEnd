@@ -37,7 +37,7 @@ const Game = () => {
   const [bestScores, setBestScores] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/score").then((res) => {
+    axios.get("https://numberguessing-1r3p.onrender.com/api/score").then((res) => {
       setBestScores(res.data);
     });
   }, []);
@@ -54,7 +54,7 @@ const Game = () => {
     setGuesses([...guesses, { guess, plusMinus }]);
     if (plusMinus.every((pm) => pm === "+")) {
       setMessage(`Congratulations, ${name}! You guessed the number in ${guesses.length + 1} tries.`);
-      axios.post("http://localhost:5000/api/score", { name, guesses: guesses.length + 1 }).then((res) => {
+      axios.post("https://numberguessing-1r3p.onrender.com/api/score", { name, guesses: guesses.length + 1 }).then((res) => {
         setBestScores(res.data);
       });
     } else {
